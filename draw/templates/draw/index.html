@@ -34,7 +34,7 @@
     var tool = new paper.Tool();
     var path = new paper.Path();
     var uid = Date.now() % 10000;
-    path.strokeColor = "red";
+    path.strokeColor = getRandomColor();
     const users = new Map();
     users.set(uid, path);
 
@@ -42,17 +42,19 @@
     var url = window.location.href;
     var socket = new WebSocket(
         'ws://' + window.location.host + '/ws/draw');
+    
     tool.onMouseDrag = function(event) { //http://paperjs.org/reference/tool/ path examples
        path = users.get(uid);
+       console.log("Second color time: " + path.strokeColor);
        path.add(event.point);
        // You may need to add code here if you want to pass any other information.
-       socket.send("{\"x\" : " + event.point.x + ", \"y\" : " + event.point.y + ", \"uid\" : " + uid + "}" );
+       socket.send("{\"x\" : " + event.point.x + ", \"y\" : " + event.point.y + ", \"uid\" : " + uid + ", \"color\" : "  + JSON.stringify(path.strokeColor) + "}" );
     }
 
     tool.onMouseUp = function(event) { //http://paperjs.org/reference/tool/ path examples
         path = new paper.Path();
         path.strokeColor = users.get(uid).strokeColor;
-        socket.send("{\"endPath\" : " + true + "}" );
+        socket.send("{\"endPath\" : " + true + ", \"color\" : "  + JSON.stringify(path.strokeColor) +  "}" );
         users.set(uid, path)
        // You may need to add code here if you want to pass any other information.
     }
@@ -60,18 +62,20 @@
     socket.onmessage = function(receivedMessage) {
         var received = JSON.parse(receivedMessage.data);
         console.log("Received: " + JSON.stringify(received));
-        users.forEach(function(value, key){
+        for (let [key, value] of users){
+            console.log("Color: " + received.color);
             if (key != received.uid){
                 if (received.endPath){
                     value = new paper.Path();
-                    value.strokeColor = "red"
+                    value.strokeColor = users.get(uid).strokeColor;
                     users.set(key, value);
                 }
                 else{
+                    value.strokeColor = {red: received.color[1], green: received.color[2], blue: received.color[3]};
                     value.add(new paper.Point(received.x, received.y));
                 }
             }
-        })
+        }
         // You will probably want to add some code here to draw more lines.
     }
 
