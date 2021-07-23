@@ -36,7 +36,10 @@
     var uid = Date.now() % 10000;
     path.strokeColor = getRandomColor();
     const users = new Map();
+    const userColors = new Map();
+
     users.set(uid, path);
+    userColors.set(uid, path.strokeColor);
 
     // getting the URL (you may want to use for Exercise 3)
     var url = window.location.href;
@@ -45,7 +48,6 @@
     
     tool.onMouseDrag = function(event) { //http://paperjs.org/reference/tool/ path examples
        path = users.get(uid);
-       console.log("Second color time: " + path.strokeColor);
        path.add(event.point);
        // You may need to add code here if you want to pass any other information.
        socket.send("{\"x\" : " + event.point.x + ", \"y\" : " + event.point.y + ", \"uid\" : " + uid + ", \"color\" : "  + JSON.stringify(path.strokeColor) + "}" );
@@ -63,11 +65,10 @@
         var received = JSON.parse(receivedMessage.data);
         console.log("Received: " + JSON.stringify(received));
         for (let [key, value] of users){
-            console.log("Color: " + received.color);
             if (key != received.uid){
                 if (received.endPath){
                     value = new paper.Path();
-                    value.strokeColor = users.get(uid).strokeColor;
+                    value.strokeColor = userColors.get(key);
                     users.set(key, value);
                 }
                 else{
