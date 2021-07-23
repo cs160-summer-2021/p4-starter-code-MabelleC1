@@ -43,21 +43,28 @@
 
     // getting the URL (you may want to use for Exercise 3)
     var url = window.location.href;
+    var queryString = window.location.search;
+    size = queryString.substring(6);
+
     var socket = new WebSocket(
         'ws://' + window.location.host + '/ws/draw');
     
     tool.onMouseDrag = function(event) { //http://paperjs.org/reference/tool/ path examples
-       path = users.get(uid);
-       path.add(event.point);
-       // You may need to add code here if you want to pass any other information.
-       socket.send("{\"x\" : " + event.point.x + ", \"y\" : " + event.point.y + ", \"uid\" : " + uid + ", \"color\" : "  + JSON.stringify(path.strokeColor) + "}" );
+       if (size == "small"){
+            path = users.get(uid);
+            path.add(event.point);
+            // You may need to add code here if you want to pass any other information.
+            socket.send("{\"x\" : " + event.point.x + ", \"y\" : " + event.point.y + ", \"uid\" : " + uid + ", \"color\" : "  + JSON.stringify(path.strokeColor) + "}" );
+       }
     }
 
     tool.onMouseUp = function(event) { //http://paperjs.org/reference/tool/ path examples
-        path = new paper.Path();
-        path.strokeColor = users.get(uid).strokeColor;
-        socket.send("{\"endPath\" : " + true + ", \"color\" : "  + JSON.stringify(path.strokeColor) +  "}" );
-        users.set(uid, path)
+        if (size == "small"){
+            path = new paper.Path();
+            path.strokeColor = users.get(uid).strokeColor;
+            socket.send("{\"endPath\" : " + true + ", \"color\" : "  + JSON.stringify(path.strokeColor) +  "}" );
+            users.set(uid, path)
+        }
        // You may need to add code here if you want to pass any other information.
     }
 
@@ -65,7 +72,7 @@
         var received = JSON.parse(receivedMessage.data);
         console.log("Received: " + JSON.stringify(received));
         for (let [key, value] of users){
-            if (key != received.uid){
+            if (size == "large"){
                 if (received.endPath){
                     value = new paper.Path();
                     value.strokeColor = userColors.get(key);
