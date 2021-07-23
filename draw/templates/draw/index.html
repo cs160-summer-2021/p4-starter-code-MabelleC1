@@ -19,6 +19,7 @@
     <canvas id="myCanvas" width="750px" height="750px"></canvas>
 </body>
 <script>
+    // Adapted by "https://stackoverflow.com/questions/1484506/random-color-generator" post answered by "Anatoliy" and edited by "Paolo Forgia"
     function getRandomColor() {
         var letters = '0123456789ABCDEF';
         var color = '#';
@@ -27,6 +28,7 @@
         }
         return color;
     }
+    // End of adapted code.
 
     // setting up the canvas and one paper tool
     var canvas = document.getElementById('myCanvas');
