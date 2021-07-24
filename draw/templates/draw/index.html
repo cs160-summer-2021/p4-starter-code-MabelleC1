@@ -3,95 +3,95 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>P4 Drawing</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  	<title>Current P4 Coloring</title>
+      <link rel="stylesheet" type="text/css" href="{% static 'draw/vendor/bootstrap/css/bootstrap.min.css' %}">
+      <script type="text/javascript" src="{% static 'draw/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+      <script type="text/javascript" src="{% static 'draw/vendor/paper/paper-full.min.js' %}"></script>
+  
+	<style type="text/css">
 
-    <link rel="stylesheet" type="text/css" href="{% static 'draw/vendor/bootstrap/css/bootstrap.min.css' %}">
-    <script type="text/javascript" src="{% static 'draw/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'draw/vendor/paper/paper-full.min.js' %}"></script>
+		.swatch {
+			width: 24px;
+			height: 24px;
+			-moz-border-radius: 12px;
+			-webkit-border-radius: 12px;
+			border-radius: 12px;
+			margin: 3px;
+		}
 
-    <style type="text/css">
-    </style>
+		#myCanvas {
+			padding-left: 0;
+		    padding-right: 0;
+		    margin-left: auto;
+		    margin-right: auto;
+		    display: block;
+		}
+	</style>
 
-</head>
-<body>
-    <!-- You may change the dimensions of this canvas -->
-    <canvas id="myCanvas" width="750px" height="750px"></canvas>
-</body>
-<script>
-    // Adapted by "https://stackoverflow.com/questions/1484506/random-color-generator" post answered by "Anatoliy" and edited by "Paolo Forgia"
-    function getRandomColor() {
-        var letters = '0123456789ABCDEF';
-        var color = '#';
-        for (var i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-    }
-    // End of adapted code.
+	<script type="text/javascript" canvas="canvas">
+		window.onload = function() {
+			var canvas = document.getElementById('myCanvas');
 
-    // setting up the canvas and one paper tool
-    var canvas = document.getElementById('myCanvas');
-    paper.setup(canvas);
-    var tool = new paper.Tool();
-    var path = new paper.Path();
-    var uid = Date.now() % 10000;
-    path.strokeColor = getRandomColor();
-    const users = new Map();
-    const userColors = new Map();
+			// coloring page
+			var map = {
+				item: "A1",
+				lastClicked: null,
+				filePath: '/static/draw/vendor/images/SimpleMap.svg'
+			};
 
-    users.set(uid, path);
-    userColors.set(uid, path.strokeColor);
+            var url = window.location.href;
+            var queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
 
-    // getting the URL (you may want to use for Exercise 3)
-    var url = window.location.href;
-    var queryString = window.location.search;
-    size = queryString.substring(6);
+            const size = urlParams.get('size');
+            const building = urlParams.get('building');
 
-    var socket = new WebSocket(
-        'ws://' + window.location.host + '/ws/draw');
-    
-    tool.onMouseDrag = function(event) { //http://paperjs.org/reference/tool/ path examples
-       if (size == "small"){
-            path = users.get(uid);
-            path.add(event.point);
-            // You may need to add code here if you want to pass any other information.
-            socket.send("{\"x\" : " + event.point.x + ", \"y\" : " + event.point.y + ", \"uid\" : " + uid + ", \"color\" : "  + JSON.stringify(path.strokeColor) + "}" );
-       }
-    }
 
-    tool.onMouseUp = function(event) { //http://paperjs.org/reference/tool/ path examples
-        if (size == "small"){
-            path = new paper.Path();
-            path.strokeColor = users.get(uid).strokeColor;
-            socket.send("{\"endPath\" : " + true + ", \"color\" : "  + JSON.stringify(path.strokeColor) +  "}" );
-            users.set(uid, path)
-        }
-       // You may need to add code here if you want to pass any other information.
-    }
+            function myCustomInteraction(uid, value) {
+                var tool = new paper.Tool();
 
-    socket.onmessage = function(receivedMessage) {
-        var received = JSON.parse(receivedMessage.data);
-        console.log("Received: " + JSON.stringify(received));
-        for (let [key, value] of users){
-            if (size == "large"){
-                if (received.endPath){
-                    value = new paper.Path();
-                    value.strokeColor = userColors.get(key);
-                    users.set(key, value);
-                }
-                else{
-                    value.strokeColor = {red: received.color[1], green: received.color[2], blue: received.color[3]};
-                    value.add(new paper.Point(received.x, received.y));
+                tool.minDistance = 2;
+                var path;
+                window.onload = function () {
+                    //manipulate query string to get what building we are in
+                    map.item = building;
+                    console.log("what is map.item: " + map.item);
+                    map.item.fillColor = float2color(1-buildingGroups.get(building)/total());//some function that counts how many people are present;
+                    path.strokeWidth = brushsize;
                 }
             }
-        }
-        // You will probably want to add some code here to draw more lines.
-    }
 
-    socket.onclose = function(e) {
-        console.error('Chat socket closed unexpectedly');
-    };
 
-</script>
+			function init(custom){
+				paper.setup(canvas);
+
+				paper.project.importSVG(map.filePath, function(item) {
+					// map.item = item._children["design-freepik"];
+				    // paper.project.insertLayer(0,map.item);
+                   
+                     var _currentFill = "#f00"; // red
+                    // $svg = $("#SimpleMap");
+                    console.log("What is map.item: " + map.item);
+                    map.item.fillColor= _currentFill;
+                    
+				    if (custom) {
+				    	myCustomInteraction();
+				    } else {
+				    	myGradientInteraction();
+				    }
+
+				});
+			}
+
+			// Set up the map interactivity.
+			init(true);
+		}
+	</script>
+</head>
+<body>
+
+	<canvas id="myCanvas" width="750px" height="750px"></canvas>
+    <h1>hello</h1>
+</body>
 </html>
