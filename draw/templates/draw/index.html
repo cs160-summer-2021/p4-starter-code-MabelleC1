@@ -10,16 +10,6 @@
       <script type="text/javascript" src="{% static 'draw/vendor/paper/paper-full.min.js' %}"></script>
   
 	<style type="text/css">
-
-		.swatch {
-			width: 24px;
-			height: 24px;
-			-moz-border-radius: 12px;
-			-webkit-border-radius: 12px;
-			border-radius: 12px;
-			margin: 3px;
-		}
-
 		#SimpleMap {
 			padding-left: 0;
 		    padding-right: 0;
@@ -39,6 +29,7 @@
         <rect id="B3" x="59" y="307" width="176" height="31" fill="#A5A6F6" stroke="black" stroke-width="4"/>
     </svg>
 	<script type="text/javascript" canvas="canvas">
+        
         function init(){
             const buildingGroups = new Map();
             buildingGroups.set('#A1', [1,5]); 
