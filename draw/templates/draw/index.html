@@ -39,20 +39,6 @@
         <rect id="B3" x="59" y="307" width="176" height="31" fill="#A5A6F6" stroke="black" stroke-width="4"/>
     </svg>
 	<script type="text/javascript" canvas="canvas">
-        function float2color( percentage ) {
-                    var color_part_dec = 255 * percentage;
-                    var color_part_hex = Number(parseInt( color_part_dec , 10)).toString(16);
-                    return "#" + color_part_hex + color_part_hex + color_part_hex;
-                }
-
-        function updateBoxes(buildingGroups){
-            for (let [key, value] of buildingGroups){
-                var rectbox = document.querySelector(key);
-                var color = float2color(1-(value[0]/value[1]));//some function that counts how many people are present;
-                rectbox.setAttribute("fill", color);
-            }
-        }
-
         function init(){
             const buildingGroups = new Map();
             buildingGroups.set('#A1', [1,5]); 
@@ -68,6 +54,21 @@
             
             return [buildingGroups, size, building];
         }
+
+        function updateBoxes(buildingGroups){
+            for (let [key, value] of buildingGroups){
+                var rectbox = document.querySelector(key);
+                var color = float2color(1-(value[0]/value[1]));//some function that counts how many people are present;
+                rectbox.setAttribute("fill", color);
+            }
+        }
+
+        function float2color( percentage ) {
+            var color_part_dec = 255 * percentage;
+            var color_part_hex = Number(parseInt( color_part_dec , 10)).toString(16);
+            return "#" + color_part_hex + color_part_hex + color_part_hex;
+        }
+
 
         let groupOfObjects = init();
         const buildingGroups = groupOfObjects[0];
