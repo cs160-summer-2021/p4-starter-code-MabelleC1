@@ -39,19 +39,44 @@
         <rect id="B3" x="59" y="307" width="176" height="31" fill="#A5A6F6" stroke="black" stroke-width="4"/>
     </svg>
 	<script type="text/javascript" canvas="canvas">
-        const buildingGroups = new Map();
-        buildingGroups.set('#A1', [1,5]); 
-        buildingGroups.set('#A2', [3,5]);  
-        buildingGroups.set('#B1', [4,5]);  
-        buildingGroups.set('#B2', [2,5]); 
-        buildingGroups.set('#B3', [1,5]); 
-        var url = window.location.href;
-        var queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const size = urlParams.get('size');
-        const building = urlParams.get('building');
-        console.log("Size: " + size);
-        console.log("Building: " + building);
+        function float2color( percentage ) {
+                    var color_part_dec = 255 * percentage;
+                    var color_part_hex = Number(parseInt( color_part_dec , 10)).toString(16);
+                    return "#" + color_part_hex + color_part_hex + color_part_hex;
+                }
+
+        function updateBoxes(buildingGroups){
+            for (let [key, value] of buildingGroups){
+                var rectbox = document.querySelector(key);
+                var color = float2color(1-(value[0]/value[1]));//some function that counts how many people are present;
+                rectbox.setAttribute("fill", color);
+            }
+        }
+
+        function init(){
+            const buildingGroups = new Map();
+            buildingGroups.set('#A1', [1,5]); 
+            buildingGroups.set('#A2', [3,5]);  
+            buildingGroups.set('#B1', [4,5]);  
+            buildingGroups.set('#B2', [2,5]); 
+            buildingGroups.set('#B3', [1,5]); 
+            var url = window.location.href;
+            var queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const size = urlParams.get('size');
+            const building = urlParams.get('building');
+            
+            return [buildingGroups, size, building];
+        }
+
+        let groupOfObjects = init();
+        const buildingGroups = groupOfObjects[0];
+        const size = groupOfObjects[1];
+        const building = groupOfObjects[2];
+
+        if (size == "large"){
+            updateBoxes(buildingGroups);
+        }
 
         var socket = new WebSocket(
         'ws://' + window.location.host + '/ws/draw');
@@ -63,23 +88,11 @@
         
         socket.onmessage = function(receivedMessage) {
         var received = JSON.parse(receivedMessage.data);
-        for (let [key, value] of buildingGroups){
-            if (size == "large"){
+        if (size == "large"){
                 var strform = "#"+received.building;
                 var updatedvalue = buildingGroups.get(strform)[0]+1;
-                console.log("what is this: "+ updatedvalue)
                 buildingGroups.set(strform, [updatedvalue, buildingGroups.get(strform)[1]]);
-
-                function float2color( percentage ) {
-                    var color_part_dec = 255 * percentage;
-                    var color_part_hex = Number(parseInt( color_part_dec , 10)).toString(16);
-                    return "#" + color_part_hex + color_part_hex + color_part_hex;
-                }
-                //manipulate query string to get what building we are in
-                var rectbox = document.querySelector(key);
-                var color = float2color(1-(value[0]/value[1]));//some function that counts how many people are present;
-                rectbox.setAttribute("fill", color);
-            }
+                updateBoxes(buildingGroups);
         }
         // You will probably want to add some code here to draw more lines.
     }

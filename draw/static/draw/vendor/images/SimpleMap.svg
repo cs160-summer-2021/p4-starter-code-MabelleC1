@@ -1,9 +1,9 @@
-<object id = "SimpleMap" width="294" height="405" viewBox="0 0 294 405" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg id = "SimpleMap" width="294" height="405" viewBox="0 0 294 405" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect id="RoomA" x="28" y="2" width="237" height="105" fill="#EF5DA8" stroke="black" stroke-width="4"/>
     <rect id="RoomB" x="2" y="107" width="290" height="296" fill="#2D8CE3" stroke="black" stroke-width="4"/>
-    <rect id="A1" x="75" y="41" width="46" height="31"  stroke="black" stroke-width="4"/>
+    <rect id="A1" x="75" y="41" width="46" height="31" fill="#F178B6" stroke="black" stroke-width="4"/>
     <rect id="A2" x="173" y="41" width="46" height="31" fill="#FCDDEC" stroke="black" stroke-width="4"/>
     <rect id="B1" x="59" y="171" width="176" height="31" fill="96DB60" stroke="black" stroke-width="4"/>
     <rect id="B2" x="59" y="239" width="176" height="31" fill="#F79854" stroke="black" stroke-width="4"/>
     <rect id="B3" x="59" y="307" width="176" height="31" fill="#A5A6F6" stroke="black" stroke-width="4"/>
-</object>
+</svg>
