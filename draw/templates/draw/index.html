@@ -30,8 +30,7 @@
         <rect id="B2" x="59" y="239" width="176" height="31" fill="#F79854" stroke="black" stroke-width="4"/>
         <rect id="B3" x="59" y="307" width="176" height="31" fill="#A5A6F6" stroke="black" stroke-width="4"/>
     </svg>
-	<script type="text/javascript" canvas="canvas">
-        
+	<script type="text/javascript" canvas="canvas">  
         function init(){
             const buildingGroups = new Map();
             buildingGroups.set('#A1', [1,5]); 
@@ -78,20 +77,34 @@
 
         window.onload = function() {
             if (size == "small"){
-                socket.send("{\"building\" : " + JSON.stringify(building) + "}" );
+                socket.send("{\"building\" : " + JSON.stringify(building) + ", \"status\" : " + (1) + "}" );
             }
+        }
+
+        //when clicking a button send close
+        // window.onclose = function() {
+        //     console.log("Prit anything");
+        //     if (size == "small"){
+        //         socket.send("{\"building\" : " + JSON.stringify(building) + ", \"status\" : " + (-1) +  "}" );
+        //     }
+        // }
+        window.addEventListener('beforeunload', function (e) {
+            e.preventDefault();
+            e.returnValue = '';
+        });
+
         
         socket.onmessage = function(receivedMessage) {
         var received = JSON.parse(receivedMessage.data);
         if (size == "large"){
+                console.log("Building: " + received.building + " Status: " + received.status);
                 var strform = "#"+received.building;
-                var updatedvalue = buildingGroups.get(strform)[0]+1;
+                var updatedvalue = buildingGroups.get(strform)[0]+received.status;
                 buildingGroups.set(strform, [updatedvalue, buildingGroups.get(strform)[1]]);
                 updateBoxes(buildingGroups);
         }
         // You will probably want to add some code here to draw more lines.
     }
-}
 
     socket.onclose = function(e) {
         console.error('Chat socket closed unexpectedly');
