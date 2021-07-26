@@ -19,6 +19,8 @@
 		    display: block;
 		}
 	</style>
+</head>
+<body>
     <svg id = "SimpleMap" width="294" height="405" viewBox="0 0 294 405" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect id="RoomA" x="28" y="2" width="237" height="105" fill="#EF5DA8" stroke="black" stroke-width="4"/>
         <rect id="RoomB" x="2" y="107" width="290" height="296" fill="#2D8CE3" stroke="black" stroke-width="4"/>
@@ -37,6 +39,7 @@
             buildingGroups.set('#B1', [4,5]);  
             buildingGroups.set('#B2', [2,5]); 
             buildingGroups.set('#B3', [1,5]); 
+            
             var url = window.location.href;
             var queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
@@ -54,12 +57,12 @@
             }
         }
 
+        //Link to where I foudn the code
         function float2color( percentage ) {
             var color_part_dec = 255 * percentage;
             var color_part_hex = Number(parseInt( color_part_dec , 10)).toString(16);
             return "#" + color_part_hex + color_part_hex + color_part_hex;
         }
-
 
         let groupOfObjects = init();
         const buildingGroups = groupOfObjects[0];
@@ -94,7 +97,5 @@
         console.error('Chat socket closed unexpectedly');
     };
 	</script>
-</head>
-<body>
 </body>
 </html>
