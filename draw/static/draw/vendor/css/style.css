@@ -1,0 +1,95 @@
+html, body, div, span, applet, object,
+iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
+pre, a, abbr, acronym, address, big, cite,
+code, del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var, b,
+u, i, center, dl, dt, dd, ol, ul, li, fieldset,
+form, label, legend, table, caption, tbody,
+tfoot, thead, tr, th, td, article, aside,
+canvas, details, embed, figure, figcaption,
+footer, header, hgroup, menu, nav, output, ruby,
+section, summary, time, mark, audio, video {
+    margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+html, body {
+    width: 100%; 
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    color: #4E5D79;
+}
+
+body {
+    background-color: #F5F7FB;
+}
+
+.content-holder {
+    width: 100%;
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+/*
+#library-name {
+    
+}
+*/
+
+h1 {
+    font-weight: 500;
+    font-size: 36pt;
+}
+
+h4 {
+    font-weight: 300;
+    font-size: 16pt;
+}
+
+#library-floor {
+    background-color: #ffffff;
+    padding: 0.8rem 1.2rem;
+    border-radius: 16px;
+    box-shadow: 0px 0px 10px #00000015;
+}
+
+#library-free {
+    max-width: 32rem;
+    margin-top: 2rem;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1.2rem;
+    border-radius: 16px;
+    box-shadow: 0px 0px 10px #00000015;
+}
+
+#colours {
+    display: flex;
+    flex-direction: row;
+}
+
+.colour-block {
+    width: 4rem;
+    height: 2.8rem;
+    border: 3.2px solid #ffffff;
+    border-radius: 2px;
+    background-color: aqua;
+}

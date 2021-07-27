@@ -5,31 +5,141 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   	<title>CurrP4 Coloring</title>
-      <link rel="stylesheet" type="text/css" href="{% static 'draw/vendor/bootstrap/css/bootstrap.min.css' %}">
-      <script type="text/javascript" src="{% static 'draw/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
-      <script type="text/javascript" src="{% static 'draw/vendor/paper/paper-full.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'draw/vendor/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'draw/vendor/css/style.css' %}">
+    <script type="text/javascript" src="{% static 'draw/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'draw/vendor/paper/paper-full.min.js' %}"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
   
-	<style type="text/css">
-		#SimpleMap {
-			padding-left: 0;
-		    padding-right: 0;
-		    margin-left: auto;
-		    margin-right: auto;
-            margin-top: 20vh;
-		    display: block;
-		}
-	</style>
 </head>
 <body>
-    <svg id = "SimpleMap" width="294" height="405" viewBox="0 0 294 405" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect id="RoomA" x="28" y="2" width="237" height="105" fill="#EF5DA8" stroke="black" stroke-width="4"/>
-        <rect id="RoomB" x="2" y="107" width="290" height="296" fill="#2D8CE3" stroke="black" stroke-width="4"/>
-        <rect id="A1" x="75" y="41" width="46" height="31" fill="#F178B6" stroke="black" stroke-width="4"/>
-        <rect id="A2" x="173" y="41" width="46" height="31" fill="#FCDDEC" stroke="black" stroke-width="4"/>
-        <rect id="B1" x="59" y="171" width="176" height="31" fill="96DB60" stroke="black" stroke-width="4"/>
-        <rect id="B2" x="59" y="239" width="176" height="31" fill="#F79854" stroke="black" stroke-width="4"/>
-        <rect id="B3" x="59" y="307" width="176" height="31" fill="#A5A6F6" stroke="black" stroke-width="4"/>
-    </svg>
+	<div class="content-holder">
+		<div class="large-display">
+			<div class="top-info">
+				<div id="library-name">
+					<h1>Dima Library</h1>
+					<h4>UC Berkeley</h4>
+				</div>
+				<div id="library-floor">
+					Ground floor
+				</div>
+			</div>
+			<svg width="1049" height="443" viewBox="0 0 1049 443" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<rect id="RoomA" x="75" y="48" width="230" height="100" fill="white" fill-opacity="0.3" stroke="#D5DEE4" stroke-width="6" stroke-linejoin="round"/>
+				<rect id="RoomB" x="47" y="148" width="286" height="292" fill="white" fill-opacity="0.3" stroke="#D5DEE4" stroke-width="6" stroke-linejoin="round"/>
+				<rect id="RoomC" x="333" y="230" width="148" height="210" fill="white" fill-opacity="0.3" stroke="#D5DEE4" stroke-width="6" stroke-linejoin="round"/>
+				<rect id="RoomD" x="481" y="95" width="305" height="345" fill="white" fill-opacity="0.3" stroke="#D5DEE4" stroke-width="6" stroke-linejoin="round"/>
+				<rect id="RoomE" x="786" y="243" width="260" height="197" fill="white" fill-opacity="0.3" stroke="#D5DEE4" stroke-width="6" stroke-linejoin="round"/>
+				<rect id="A1" x="102" y="70" width="48" height="56" fill="#DDF0F8" stroke="#B8E5F3" stroke-width="4" stroke-linejoin="round"/>
+				<rect id="A2" x="166" y="70" width="48" height="56" fill="#DDF0F8" stroke="#B8E5F3" stroke-width="4" stroke-linejoin="round"/>
+				<rect id="A3" x="230" y="70" width="48" height="56" fill="#B8E5F3" stroke="#7BD3EB" stroke-width="4" stroke-linejoin="round"/>
+				<rect id="B1" x="104" y="206" width="80" height="80" fill="#21BADF" stroke="#00A6CE" stroke-width="4" stroke-linejoin="round"/>
+				<rect id="B2" x="196" y="206" width="80" height="80" fill="#7BD3EB" stroke="#21BADF" stroke-width="4" stroke-linejoin="round"/>
+				<rect id="B3" x="104" y="298" width="80" height="80" fill="#7BD3EB" stroke="#21BADF" stroke-width="4" stroke-linejoin="round"/>
+				<rect id="B4" x="196" y="298" width="80" height="80" fill="#DDF0F8" stroke="#B8E5F3" stroke-width="4" stroke-linejoin="round"/>
+				<rect id="C1" x="370" y="251" width="75" height="45" fill="#21BADF" stroke="#00A6CE" stroke-width="4" stroke-linejoin="round"/>
+				<rect id="C2" x="370" y="312" width="75" height="45" fill="#21BADF" stroke="#00A6CE" stroke-width="4" stroke-linejoin="round"/>
+				<rect id="C3" x="370" y="373" width="75" height="45" fill="#21BADF" stroke="#00A6CE" stroke-width="4" stroke-linejoin="round"/>
+				<rect id="D1" x="532" y="121" width="203" height="55" fill="#7BD3EB" stroke="#21BADF" stroke-width="4" stroke-linejoin="round"/>
+				<rect id="D2" x="532" y="200" width="203" height="55" fill="#21BADF" stroke="#00A6CE" stroke-width="4" stroke-linejoin="round"/>
+				<rect id="D3" x="532" y="279" width="203" height="55" fill="#21BADF" stroke="#00A6CE" stroke-width="4" stroke-linejoin="round"/>
+				<rect id="D4" x="532" y="358" width="203" height="55" fill="#21BADF" stroke="#00A6CE" stroke-width="4" stroke-linejoin="round"/>
+				<rect id="E1" x="863" y="282" width="106" height="123" fill="#7BD3EB" stroke="#21BADF" stroke-width="4" stroke-linejoin="round"/>
+				<g filter="url(#filter0_d)">
+				<rect x="32" y="20" width="56" height="56" rx="6.89231" fill="#EA5B62"/>
+				<path d="M64.9277 54.041H55.0137L52.9395 60H48.3164L57.9844 34.4062H61.9746L71.6602 60H67.0195L64.9277 54.041ZM56.2617 50.4551H63.6797L59.9707 39.8379L56.2617 50.4551Z" fill="white"/>
+				</g>
+				<g filter="url(#filter1_d)">
+				<rect x="20" y="357" width="55" height="56" rx="6.89231" fill="#EA5B62"/>
+				<path d="M38.6016 397V371.406H47.373C50.2676 371.406 52.4707 371.986 53.9824 373.146C55.4941 374.307 56.25 376.035 56.25 378.332C56.25 379.504 55.9336 380.559 55.3008 381.496C54.668 382.434 53.7422 383.16 52.5234 383.676C53.9062 384.051 54.9727 384.76 55.7227 385.803C56.4844 386.834 56.8652 388.076 56.8652 389.529C56.8652 391.932 56.0918 393.777 54.5449 395.066C53.0098 396.355 50.8066 397 47.9355 397H38.6016ZM43.0488 385.451V393.449H47.9883C49.3828 393.449 50.4727 393.104 51.2578 392.412C52.043 391.721 52.4355 390.76 52.4355 389.529C52.4355 386.869 51.0762 385.51 48.3574 385.451H43.0488ZM43.0488 382.182H47.4082C48.791 382.182 49.8691 381.871 50.6426 381.25C51.4277 380.617 51.8203 379.727 51.8203 378.578C51.8203 377.312 51.457 376.398 50.7305 375.836C50.0156 375.273 48.8965 374.992 47.373 374.992H43.0488V382.182Z" fill="white"/>
+				</g>
+				<g filter="url(#filter2_d)">
+				<rect x="345" y="187" width="56" height="56" rx="6.89231" fill="#EA5B62"/>
+				<path d="M383.131 218.668C382.873 221.398 381.865 223.531 380.107 225.066C378.35 226.59 376.012 227.352 373.094 227.352C371.055 227.352 369.256 226.871 367.697 225.91C366.15 224.938 364.955 223.561 364.111 221.779C363.268 219.998 362.828 217.93 362.793 215.574V213.184C362.793 210.77 363.221 208.643 364.076 206.803C364.932 204.963 366.156 203.545 367.75 202.549C369.355 201.553 371.207 201.055 373.305 201.055C376.129 201.055 378.402 201.822 380.125 203.357C381.848 204.893 382.85 207.061 383.131 209.861H378.701C378.49 208.021 377.951 206.697 377.084 205.889C376.229 205.068 374.969 204.658 373.305 204.658C371.371 204.658 369.883 205.367 368.84 206.785C367.809 208.191 367.281 210.26 367.258 212.99V215.258C367.258 218.023 367.75 220.133 368.734 221.586C369.73 223.039 371.184 223.766 373.094 223.766C374.84 223.766 376.152 223.373 377.031 222.588C377.91 221.803 378.467 220.496 378.701 218.668H383.131Z" fill="white"/>
+				</g>
+				<g filter="url(#filter3_d)">
+				<rect x="495" y="59" width="56" height="56" rx="6.89231" fill="#EA5B62"/>
+				<path d="M513.602 99V73.4062H521.16C523.422 73.4062 525.426 73.9102 527.172 74.918C528.93 75.9258 530.289 77.3555 531.25 79.207C532.211 81.0586 532.691 83.1797 532.691 85.5703V86.8535C532.691 89.2793 532.205 91.4121 531.232 93.252C530.271 95.0918 528.895 96.5098 527.102 97.5059C525.32 98.502 523.275 99 520.967 99H513.602ZM518.049 76.9922V95.4492H520.949C523.281 95.4492 525.068 94.7227 526.311 93.2695C527.564 91.8047 528.203 89.707 528.227 86.9766V85.5527C528.227 82.7754 527.623 80.6543 526.416 79.1895C525.209 77.7246 523.457 76.9922 521.16 76.9922H518.049Z" fill="white"/>
+				</g>
+				<g filter="url(#filter4_d)">
+				<rect x="807" y="211" width="53" height="56" rx="6.89231" fill="#EA5B62"/>
+				<path d="M840.561 239.574H830.049V247.449H842.336V251H825.602V225.406H842.213V228.992H830.049V236.059H840.561V239.574Z" fill="white"/>
+				</g>
+				<defs>
+				<filter id="filter0_d" x="12" y="0" width="96" height="96" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+				<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+				<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+				<feOffset/>
+				<feGaussianBlur stdDeviation="10"/>
+				<feComposite in2="hardAlpha" operator="out"/>
+				<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"/>
+				<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+				<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+				</filter>
+				<filter id="filter1_d" x="0" y="337" width="95" height="96" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+				<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+				<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+				<feOffset/>
+				<feGaussianBlur stdDeviation="10"/>
+				<feComposite in2="hardAlpha" operator="out"/>
+				<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"/>
+				<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+				<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+				</filter>
+				<filter id="filter2_d" x="325" y="167" width="96" height="96" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+				<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+				<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+				<feOffset/>
+				<feGaussianBlur stdDeviation="10"/>
+				<feComposite in2="hardAlpha" operator="out"/>
+				<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"/>
+				<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+				<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+				</filter>
+				<filter id="filter3_d" x="475" y="39" width="96" height="96" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+				<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+				<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+				<feOffset/>
+				<feGaussianBlur stdDeviation="10"/>
+				<feComposite in2="hardAlpha" operator="out"/>
+				<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"/>
+				<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+				<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+				</filter>
+				<filter id="filter4_d" x="787" y="191" width="93" height="96" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+				<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+				<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+				<feOffset/>
+				<feGaussianBlur stdDeviation="10"/>
+				<feComposite in2="hardAlpha" operator="out"/>
+				<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"/>
+				<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+				<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+				</filter>
+				</defs>
+			</svg>	
+			<div id="library-free">
+				<h3>Busy</h3>
+				<div id="colours">
+					<div class="colour-block"></div>
+					<div class="colour-block"></div>
+					<div class="colour-block"></div>
+					<div class="colour-block"></div>
+				</div>
+				<h3>Free</h3>
+			</div>	
+		</div>
+		<div class="small-display">
+			<div class="small-header">
+
+			</div>
+		</div>
+		
+	</div>
+    
+		
 	<script type="text/javascript" canvas="canvas">
         
         function init(){
@@ -81,21 +191,22 @@
                 socket.send("{\"building\" : " + JSON.stringify(building) + "}" );
             }
         
-        socket.onmessage = function(receivedMessage) {
-        var received = JSON.parse(receivedMessage.data);
-        if (size == "large"){
-                var strform = "#"+received.building;
-                var updatedvalue = buildingGroups.get(strform)[0]+1;
-                buildingGroups.set(strform, [updatedvalue, buildingGroups.get(strform)[1]]);
-                updateBoxes(buildingGroups);
-        }
-        // You will probably want to add some code here to draw more lines.
-    }
-}
+			socket.onmessage = function(receivedMessage) {
+				var received = JSON.parse(receivedMessage.data);
+				if (size == "large"){
+					var strform = "#"+received.building;
+					var updatedvalue = buildingGroups.get(strform)[0]+1;
+					buildingGroups.set(strform, [updatedvalue, buildingGroups.get(strform)[1]]);
+					updateBoxes(buildingGroups);
+				}
+			// You will probably want to add some code here to draw more lines.
+			}
+		}
 
     socket.onclose = function(e) {
         console.error('Chat socket closed unexpectedly');
     };
 	</script>
+
 </body>
 </html>
