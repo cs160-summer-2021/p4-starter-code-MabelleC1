@@ -133,11 +133,16 @@
 			</div>	
 		</div>
 		<div id = "smallScreen" class="small-display">
-			<div class="small-banner">
+			<div id="small-banner">
 				<img src="../../static/draw/vendor/images/alert-circle.svg" style="margin-right: 1rem;">
 				<div>Do not close this window!</div>
 			</div>
-			<div>I'm leaving the library</div>
+            <div id = "leavingMessage">
+                Thanks for checking out! Refresh the page to sign back in or close the window.
+            </div>
+			<div id  = "leavingButton">
+                <button onclick = "leavingFunction()">I'm leaving the library me</button>
+            </div>
 		</div>
 		
 	</div>
@@ -149,6 +154,8 @@
             var small = document.getElementById("smallScreen");
             var large = document.getElementById("largeScreen");
             if (size == "small"){
+                var leave = document.getElementById("leavingMessage");
+                leave.style.display = "none";
                 small.style.display = "block";
                 large.style.display = "none";
             }
@@ -251,20 +258,32 @@
 
         window.onload = function() {
             if (size == "small"){
-                socket.send("{\"building\" : " + JSON.stringify(building) + ", \"floor\" : " +  floor + "}" );
+                socket.send("{\"building\" : " + JSON.stringify(building) + ", \"floor\" : " +  floor + ", \"value\" : " + 1 + "}" );
             }
-        
 			socket.onmessage = function(receivedMessage) {
 				var received = JSON.parse(receivedMessage.data);
 				if (size == "large"){
 					var strform = "#"+received.building;
-					var updatedvalue = buildingGroups[received.floor].get(strform)[0]+1;
+					var updatedvalue = buildingGroups[received.floor].get(strform)[0]+received.value;
 					buildingGroups[received.floor].set(strform, [updatedvalue, buildingGroups[received.floor].get(strform)[1]]);
 					updateBoxes(buildingGroups[received.floor]);
 				}
 			// You will probably want to add some code here to draw more lines.
 			}
 		}
+        function leavingFunction(){
+            if (size == "small"){
+                socket.send("{\"building\" : " + JSON.stringify(building) + ", \"floor\" : " +  floor  + ", \"value\" : " + -1 + "}" );
+            }
+            var small = document.getElementById("small-banner");
+            var leave = document.getElementById("leavingMessage");
+            var leaveButton = document.getElementById("leavingButton");
+            if (size == "small"){
+                leave.style.display = "block";
+                small.style.display = "none";
+                leaveButton.style.display = "none";
+            }
+        }
 
     socket.onclose = function(e) {
         console.error('Chat socket closed unexpectedly');
