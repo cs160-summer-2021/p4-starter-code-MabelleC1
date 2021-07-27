@@ -5,6 +5,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   	<title>CurrP4 Coloring</title>
+    <style></style>
     <link rel="stylesheet" type="text/css" href="{% static 'draw/vendor/bootstrap/css/bootstrap.min.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'draw/vendor/css/style.css' %}">
     <script type="text/javascript" src="{% static 'draw/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
@@ -149,6 +150,15 @@
             buildingGroups.set('#B1', [4,5]);  
             buildingGroups.set('#B2', [2,5]); 
             buildingGroups.set('#B3', [1,5]); 
+            buildingGroups.set('#B4', [0,5]); 
+            buildingGroups.set('#C1', [3,5]);  
+            buildingGroups.set('#C2', [4,5]);  
+            buildingGroups.set('#C3', [2,5]); 
+            buildingGroups.set('#D1', [0,5]); 
+            buildingGroups.set('#D2', [2,5]); 
+            buildingGroups.set('#D3', [5,5]); 
+            buildingGroups.set('#D4', [1,5]); 
+            buildingGroups.set('#E1', [5,5]); 
             
             var url = window.location.href;
             var queryString = window.location.search;
@@ -159,9 +169,18 @@
             return [buildingGroups, size, building];
         }
 
+        function updateColorPalette(){
+            for (let i = 0; i < 5; i++) {
+                var color = float2color(1-(i/5));
+            }
+        }
+
         function updateBoxes(buildingGroups){
             for (let [key, value] of buildingGroups){
                 var rectbox = document.querySelector(key);
+                if (value[0]==value[1]){
+                    value[0]= value[0]-0.5;
+                }
                 var color = float2color(1-(value[0]/value[1]));//some function that counts how many people are present;
                 rectbox.setAttribute("fill", color);
             }
@@ -171,7 +190,8 @@
         function float2color( percentage ) {
             var color_part_dec = 255 * percentage;
             var color_part_hex = Number(parseInt( color_part_dec , 10)).toString(16);
-            return "#" + color_part_hex + color_part_hex + color_part_hex;
+            // console.log("what is color_part_hex: ", color_part_hex)
+            return "#" + "00" + color_part_hex + color_part_hex;
         }
 
         let groupOfObjects = init();
