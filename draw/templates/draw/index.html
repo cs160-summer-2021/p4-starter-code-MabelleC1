@@ -133,7 +133,7 @@
 			</div>	
 		</div>
 		<div id = "smallScreen" class="small-display">
-			<div id="small-banner">
+			<div id = "small-banner">
 				<img src="../../static/draw/vendor/images/alert-circle.svg" style="margin-right: 1rem;">
 				<div>Do not close this window!</div>
 			</div>
@@ -141,7 +141,16 @@
                 Thanks for checking out! Refresh the page to sign back in or close the window.
             </div>
 			<div id  = "leavingButton">
-                <button onclick = "leavingFunction()">I'm leaving the library me</button>
+                <button onclick = "showPopUp()">I'm leaving the library me</button>
+            </div>
+            <div class = "popup" id = "leavingPopUp"> 
+                <div class = "col-12">
+                    Are you sure you want to check out? 
+                </div>
+                <div class = "col myCol">
+                    <button onclick = "leavingFunction()">Yes</button>
+                    <button onclick = "hidePopUp()">No</button>
+                </div>
             </div>
 		</div>
 		
@@ -150,11 +159,23 @@
 		
 	<script type="text/javascript" canvas="canvas">
 
+        function showPopUp(){
+            var popup = document.getElementById("leavingPopUp");
+            popup.style.display = "block";
+        }
+
+        function hidePopUp(){
+            var popup = document.getElementById("leavingPopUp");
+            popup.style.display = "none";
+        }
+
         function showScreen(size) {
             var small = document.getElementById("smallScreen");
             var large = document.getElementById("largeScreen");
             if (size == "small"){
                 var leave = document.getElementById("leavingMessage");
+                var popup = document.getElementById("leavingPopUp");
+                popup.style.display = "none";
                 leave.style.display = "none";
                 small.style.display = "block";
                 large.style.display = "none";
@@ -282,6 +303,7 @@
                 leave.style.display = "block";
                 small.style.display = "none";
                 leaveButton.style.display = "none";
+                hidePopUp()
             }
         }
 
