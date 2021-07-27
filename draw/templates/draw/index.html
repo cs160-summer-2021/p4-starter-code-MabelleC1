@@ -17,7 +17,7 @@
 </head>
 <body>
 	<div class="content-holder">
-		<div class="large-display">
+		<div id = "largeScreen" class="large-display">
 			<div class="top-info">
 				<div id="library-name">
 					<h1>Dima Library</h1>
@@ -132,7 +132,7 @@
 				<h3>Free</h3>
 			</div>	
 		</div>
-		<div class="small-display">
+		<div id = "smallScreen" class="small-display">
 			<div class="small-banner">
 				<img src="../../static/draw/vendor/images/alert-circle.svg" style="margin-right: 1rem;">
 				<div>Do not close this window!</div>
@@ -144,6 +144,19 @@
     
 		
 	<script type="text/javascript" canvas="canvas">
+
+        function showScreen(size) {
+            var small = document.getElementById("smallScreen");
+            var large = document.getElementById("largeScreen");
+            if (size == "small"){
+                small.style.display = "block";
+                large.style.display = "none";
+            }
+            else{
+                small.style.display = "none";
+                large.style.display = "block";
+            }
+        }
         
         function init(){
             const buildingGroupsFirstFloor = new Map();
@@ -186,15 +199,12 @@
             var queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
             const size = urlParams.get('size');
+            showScreen(size);
             const building = urlParams.get('building');
             const floor = urlParams.get('floor');
             
             return [buildingGroups, size, building, floor];
         }
-
-        
-
-		
 
         function updateColorPalette(){
             for (let i = 0; i < 5; i++) {
