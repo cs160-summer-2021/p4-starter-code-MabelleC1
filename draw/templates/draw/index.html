@@ -33,9 +33,9 @@
 				<rect id="RoomC" x="333" y="230" width="148" height="210" fill="white" fill-opacity="0.3" stroke="#D5DEE4" stroke-width="6" stroke-linejoin="round"/>
 				<rect id="RoomD" x="481" y="95" width="305" height="345" fill="white" fill-opacity="0.3" stroke="#D5DEE4" stroke-width="6" stroke-linejoin="round"/>
 				<rect id="RoomE" x="786" y="243" width="260" height="197" fill="white" fill-opacity="0.3" stroke="#D5DEE4" stroke-width="6" stroke-linejoin="round"/>
-				<rect id="A1" x="102" y="70" width="48" height="56" fill="#DDF0F8" stroke="#B8E5F3" stroke-width="4" stroke-linejoin="round"/>
-				<rect id="A2" x="166" y="70" width="48" height="56" fill="#DDF0F8" stroke="#B8E5F3" stroke-width="4" stroke-linejoin="round"/>
-				<rect id="A3" x="230" y="70" width="48" height="56" fill="#B8E5F3" stroke="#7BD3EB" stroke-width="4" stroke-linejoin="round"/>
+				<rect id="A1" x="102" y="70" width="48" height="56" fill="#DDF0F8" stroke="#00A6CE" stroke-width="4" stroke-linejoin="round"/>
+				<rect id="A2" x="166" y="70" width="48" height="56" fill="#DDF0F8" stroke="#00A6CE" stroke-width="4" stroke-linejoin="round"/>
+				<rect id="A3" x="230" y="70" width="48" height="56" fill="#B8E5F3" stroke="#00A6CE" stroke-width="4" stroke-linejoin="round"/>
 				<rect id="B1" x="104" y="206" width="80" height="80" fill="#21BADF" stroke="#00A6CE" stroke-width="4" stroke-linejoin="round"/>
 				<rect id="B2" x="196" y="206" width="80" height="80" fill="#7BD3EB" stroke="#21BADF" stroke-width="4" stroke-linejoin="round"/>
 				<rect id="B3" x="104" y="298" width="80" height="80" fill="#7BD3EB" stroke="#21BADF" stroke-width="4" stroke-linejoin="round"/>
@@ -146,29 +146,50 @@
 	<script type="text/javascript" canvas="canvas">
         
         function init(){
-            const buildingGroups = new Map();
-            buildingGroups.set('#A1', [1,5]); 
-            buildingGroups.set('#A2', [3,5]);  
-            buildingGroups.set('#B1', [4,5]);  
-            buildingGroups.set('#B2', [2,5]); 
-            buildingGroups.set('#B3', [1,5]); 
-            buildingGroups.set('#B4', [0,5]); 
-            buildingGroups.set('#C1', [3,5]);  
-            buildingGroups.set('#C2', [4,5]);  
-            buildingGroups.set('#C3', [2,5]); 
-            buildingGroups.set('#D1', [0,5]); 
-            buildingGroups.set('#D2', [2,5]); 
-            buildingGroups.set('#D3', [5,5]); 
-            buildingGroups.set('#D4', [1,5]); 
-            buildingGroups.set('#E1', [5,5]); 
+            const buildingGroupsFirstFloor = new Map();
+            buildingGroupsFirstFloor.set('#A1', [1,5]); 
+            buildingGroupsFirstFloor.set('#A2', [3,5]);
+            buildingGroupsFirstFloor.set('#A3', [2,5]);  
+            buildingGroupsFirstFloor.set('#B1', [4,5]);  
+            buildingGroupsFirstFloor.set('#B2', [2,5]); 
+            buildingGroupsFirstFloor.set('#B3', [1,5]); 
+            buildingGroupsFirstFloor.set('#B4', [0,5]); 
+            buildingGroupsFirstFloor.set('#C1', [3,5]);  
+            buildingGroupsFirstFloor.set('#C2', [4,5]);  
+            buildingGroupsFirstFloor.set('#C3', [2,5]); 
+            buildingGroupsFirstFloor.set('#D1', [0,5]); 
+            buildingGroupsFirstFloor.set('#D2', [2,5]); 
+            buildingGroupsFirstFloor.set('#D3', [5,5]); 
+            buildingGroupsFirstFloor.set('#D4', [1,5]); 
+            buildingGroupsFirstFloor.set('#E1', [5,5]); 
+
+            const buildingGroupsSecondFloor = new Map();
+            buildingGroupsSecondFloor.set('#A1', [1,5]); 
+            buildingGroupsSecondFloor.set('#A2', [0,5]);  
+            buildingGroupsSecondFloor.set('#A3', [0,5]);
+            buildingGroupsSecondFloor.set('#B1', [0,5]);  
+            buildingGroupsSecondFloor.set('#B2', [0,5]); 
+            buildingGroupsSecondFloor.set('#B3', [2,5]); 
+            buildingGroupsSecondFloor.set('#B4', [0,5]); 
+            buildingGroupsSecondFloor.set('#C1', [3,5]);  
+            buildingGroupsSecondFloor.set('#C2', [1,5]);  
+            buildingGroupsSecondFloor.set('#C3', [2,5]); 
+            buildingGroupsSecondFloor.set('#D1', [0,5]); 
+            buildingGroupsSecondFloor.set('#D2', [2,5]); 
+            buildingGroupsSecondFloor.set('#D3', [3,5]); 
+            buildingGroupsSecondFloor.set('#D4', [1,5]); 
+            buildingGroupsSecondFloor.set('#E1', [1,5]); 
+
+            const buildingGroups = [buildingGroupsFirstFloor, buildingGroupsSecondFloor];
             
             var url = window.location.href;
             var queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
             const size = urlParams.get('size');
             const building = urlParams.get('building');
+            const floor = urlParams.get('floor');
             
-            return [buildingGroups, size, building];
+            return [buildingGroups, size, building, floor];
         }
 
         
@@ -184,10 +205,10 @@
         function updateBoxes(buildingGroups){
             for (let [key, value] of buildingGroups){
                 var rectbox = document.querySelector(key);
-                if (value[0]==value[1]){
-                    value[0]= value[0]-0.5;
-                }
                 var color = float2color(1-(value[0]/value[1]));//some function that counts how many people are present;
+                if (value[0]>=value[1]){
+                    color = "#000000";
+                }
                 rectbox.setAttribute("fill", color);
             }
         }
@@ -206,9 +227,13 @@
         const buildingGroups = groupOfObjects[0];
         const size = groupOfObjects[1];
         const building = groupOfObjects[2];
+        var floor = groupOfObjects[3];
 
+        if (!floor){
+            floor = 0;
+        }
         if (size == "large"){
-            updateBoxes(buildingGroups);
+            updateBoxes(buildingGroups[floor]);
         }
 
         var socket = new WebSocket(
@@ -216,16 +241,16 @@
 
         window.onload = function() {
             if (size == "small"){
-                socket.send("{\"building\" : " + JSON.stringify(building) + "}" );
+                socket.send("{\"building\" : " + JSON.stringify(building) + ", \"floor\" : " +  floor + "}" );
             }
         
 			socket.onmessage = function(receivedMessage) {
 				var received = JSON.parse(receivedMessage.data);
 				if (size == "large"){
 					var strform = "#"+received.building;
-					var updatedvalue = buildingGroups.get(strform)[0]+1;
-					buildingGroups.set(strform, [updatedvalue, buildingGroups.get(strform)[1]]);
-					updateBoxes(buildingGroups);
+					var updatedvalue = buildingGroups[received.floor].get(strform)[0]+1;
+					buildingGroups[received.floor].set(strform, [updatedvalue, buildingGroups[received.floor].get(strform)[1]]);
+					updateBoxes(buildingGroups[received.floor]);
 				}
 			// You will probably want to add some code here to draw more lines.
 			}
