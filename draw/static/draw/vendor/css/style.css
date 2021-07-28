@@ -25,6 +25,10 @@ html, body {
 }
 
 body {
+    background-image: url("https://images.fineartamerica.com/images/artworkimages/medium/1/university-of-california-berkeley-sather-tower-the-campanile-from-the-doe-library-dsc4715-wingsdomain-art-and-photography.jpg");
+    /* background-image: url("https://i.pinimg.com/originals/49/4b/45/494b45e78bdb79ceba99e9b3071ad61d.jpg"); */
+    background-size:cover;
+    background-repeat:no-repeat;
     background-color: #F5F7FB;
 }
 
@@ -107,6 +111,7 @@ h4 {
 }
 
 #small-banner {
+    margin-top: 2vh;
     background-color: #EA5B62;
     color: #ffffff;
     padding: 0.8rem 1.2rem;
@@ -135,20 +140,6 @@ h1.library{
     font-size: 6vh;
 }
 
-#leave-button {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: #00A6CE;
-    border: none;
-    color: white;
-    font-weight: 500;
-    text-align:center;
-    font-size: 3.8vh;
-    padding: 0.8rem 1.2rem;
-    width: 100%;
-    border-radius: 16px;
-}
 
 p {
     font-weight: 400;
@@ -180,23 +171,26 @@ p {
 
 .wrap {
     font:2vh Arial, san-serif;
-    background-color: lightblue;
+    background-color: lightcyan;
+    padding: 1.5vh;
+    margin-top: 3vh;
+    width:100%;
+    border: 5px solid darkblue;
   }
   h1.likert-header {
     font-size: 3vh;
     margin:20px 0 0;
     margin-left: 0vh;
-    margin-top: 3vh;
+    margin-top: 1vh;
     margin-bottom: -3vh;
   }
   form .statement {
     display:block;
-    font-size: 2.8vh;
+    font-size: 2.5vh;
     font-weight: bold;
     padding: 30px 0 0 4.25%;
-    margin-bottom:10px;
-    padding-top: 8vh;
-    padding-bottom: 8vh;
+    padding-top: 6vh;
+    padding-bottom: 5vh;
   }
   form .likert {
     list-style:none;
@@ -213,9 +207,10 @@ p {
     top:0.7vh;
     left:9.5%;
     display:block;
-    background-color:black;
+    background-color:grey;
     height:0.5vh;
     width:78%;
+    z-index: -1;
   }
   form .likert li {
     display:inline-block;
@@ -224,25 +219,28 @@ p {
     vertical-align: top;
   }
   form .likert li input[type=radio] {
+    opacity:1;
     float: left;
     clear: none;
     display:block;
     position:relative;
-    transform: scale(8);
+    transform: scale(6);
     top:0;
     left:50%;
-    margin-left:-6px;
+    margin-left:3px;
+    z-index: 1;
     
   }
   form .likert li label {
-      padding-top: 4vh;
+      padding-top: 3vh;
       font-size:  3vh;
       width:100%;
   }
   form .buttons {
     margin:30px 0;
     padding:0 4.25%;
-    text-align:right
+    text-align:right;
+    background-color: red;
   } 
   form .buttons button {
     padding: 5px 10px;
@@ -264,15 +262,40 @@ p {
     font-size: 4vh;
     padding: 0.4rem 0.8rem;
     border-radius: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }
 
 #leavingMess{
-    font-size: 3vh;
-    margin-top: 3vh;
+    padding: 1.5vh;
+    border-top: 5px solid darkblue;
+    border-left: 5px solid darkblue;
+    border-right: 5px solid darkblue; 
+    font-size: 2vh;
+    margin-top: 2vh;
+    text-align: center;
     background-color: lightcyan;
 }
 
-#leavingMessage{
+/* #leavingMessage{
     font-size: 8vh;
     text-align:center;
+    border: 5px solid darkblue;
+} */
+
+#leave-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* margin-top: 1vh; */
+    background-color: #00A6CE;
+    border: none;
+    color: white;
+    font-weight: 500;
+    text-align:center;
+    font-size: 3vh;
+    padding: 2vh 2vh;
+    width: 100%;
+    border-radius: 16px;
 }
