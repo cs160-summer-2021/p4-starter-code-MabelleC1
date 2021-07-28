@@ -101,33 +101,45 @@ h4 {
 }
 
 .small-display {
+    background-image: url("https://images.fineartamerica.com/images/artworkimages/medium/1/university-of-california-berkeley-sather-tower-the-campanile-from-the-doe-library-dsc4715-wingsdomain-art-and-photography.jpg");
+    /* background-image: url("https://i.pinimg.com/originals/49/4b/45/494b45e78bdb79ceba99e9b3071ad61d.jpg"); */
+    background-size:cover;
+    background-repeat:no-repeat;
     width: 100%; 
     height: 100%;
     padding: 2% 8%;
 }
 
 #small-banner {
+    margin-top: 2vh;
     background-color: #EA5B62;
     color: #ffffff;
     padding: 0.8rem 1.2rem;
-    border-radius: 8px;
+    font-size: 3vh;
+    border-radius: 3vh;
     box-shadow: 0px 0px 10px #00000015;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-#leave-button {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.welcome-message{
+    margin-top:2vh;
     background-color: #00A6CE;
-    border: none;
-    color: white;
-    font-weight: 500;
-    padding: 0.8rem 1.2rem;
-    border-radius: 16px;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
 }
+h4.welcome{
+    font-size: 4vh;
+    color: white;
+}
+
+h1.library{
+    font-size: 6vh;
+}
+
 
 p {
     font-weight: 400;
@@ -197,5 +209,157 @@ li {
     font-weight: 500;
     padding: 0.4rem 0.8rem;
     border-radius: 16px;
+    background-color: lightgoldenrodyellow;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    text-align:center;
+    top:0;
+    left: 0;
+    right: 0; 
+    bottom: 0; 
+    z-index: 2;
+    font-size: 8vh;
+    border-width: 1vh;
+    border-style: solid; 
+    border-color: red;
+    border-radius: 16px;
+    padding: 0.8rem 1.2rem;
+}
+#myWords{
+    margin-top: 10vh;
 }
 
+.wrap {
+    font:2vh Arial, san-serif;
+    background-color: lightcyan;
+    padding: 1.5vh;
+    margin-top: 3vh;
+    width:100%;
+    border: 5px solid darkblue;
+  }
+  h1.likert-header {
+    font-size: 3vh;
+    margin:20px 0 0;
+    margin-left: 0vh;
+    margin-top: 1vh;
+    margin-bottom: -3vh;
+  }
+  form .statement {
+    display:block;
+    font-size: 2.5vh;
+    font-weight: bold;
+    padding: 30px 0 0 4.25%;
+    padding-top: 6vh;
+    padding-bottom: 5vh;
+  }
+  form .likert {
+    list-style:none;
+    width:100%;
+    margin:0;
+    padding:0 0 35px;
+    display:block;
+    border-bottom: 2vh solid #efefef;
+  }
+  form .likert:last-of-type {border-bottom:0;}
+  form .likert:before {
+    content: '';
+    position:relative;
+    top:0.7vh;
+    left:9.5%;
+    display:block;
+    background-color:grey;
+    height:0.5vh;
+    width:78%;
+    z-index: -1;
+  }
+  form .likert li {
+    display:inline-block;
+    width:18%;
+    text-align:center;
+    vertical-align: top;
+  }
+  form .likert li input[type=radio] {
+    opacity:1;
+    float: left;
+    clear: none;
+    display:block;
+    position:relative;
+    transform: scale(6);
+    top:0;
+    left:50%;
+    margin-left:3px;
+    z-index: 1;
+    
+  }
+  form .likert li label {
+      padding-top: 3vh;
+      font-size:  3vh;
+      width:100%;
+  }
+  form .buttons {
+    margin:30px 0;
+    padding:0 4.25%;
+    text-align:right;
+    background-color: red;
+  } 
+  form .buttons button {
+    padding: 5px 10px;
+    background-color: #67ab49;
+    border: 0;
+    border-radius: 3px;
+  }
+  form .buttons .clear {background-color: #e9e9e9;}
+  form .buttons .submit {background-color: #67ab49;} 
+  form .buttons .clear:hover {background-color: #ccc;}
+  form .buttons .submit:hover {background-color: #14892c;} 
+
+#submission {
+    background-color: #94D75F;
+    border: none;
+    color: white;
+    position: relative;
+    margin: auto;
+    font-size: 4vh;
+    padding: 0.4rem 0.8rem;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+#leavingMess{
+    padding: 1.5vh;
+    border-top: 5px solid darkblue;
+    border-left: 5px solid darkblue;
+    border-right: 5px solid darkblue; 
+    font-size: 2vh;
+    margin-top: 2vh;
+    text-align: center;
+    background-color: lightcyan;
+}
+
+#leavingMessage{
+    font-size: 5vh;
+    text-align:center;
+    margin-top: 20vh;
+    border: 5px solid darkblue;
+    padding: 2vh;
+    background-color: #F5F7FB;
+}
+
+#leave-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* margin-top: 1vh; */
+    background-color: #00A6CE;
+    border: none;
+    color: white;
+    font-weight: 500;
+    text-align:center;
+    font-size: 3vh;
+    padding: 2vh 2vh;
+    width: 100%;
+    border-radius: 16px;
+}
