@@ -410,12 +410,12 @@
             updateBoxes(buildingGroups[floor]);
         }
 
-        var socket = new WebSocket('wss://' + window.location.host + '/ws/draw');
+        var socket = new WebSocket('ws://' + window.location.host + '/ws/draw');
 
-        window.onload = function() {
-			console.log(window.location.host);
-			console.log("building: " + building);
-			console.log("floor: " + floor);
+		socket.onopen = function(e) {
+			console.log("ever here");
+			// console.log("building: " + building);
+			// console.log("floor: " + floor);
             if (size == "small"){
                 socket.send("{\"building\" : " + JSON.stringify(building) + ", \"floor\" : " +  floor + ", \"value\" : " + 1 + "}" );
             }
