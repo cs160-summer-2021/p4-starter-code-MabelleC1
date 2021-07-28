@@ -155,54 +155,6 @@
 		<div id="smallScreen" class="small-display">
 			<div id="checkouthide">
 				<div id="small-banner">
-<<<<<<< HEAD
-					<img src="../../static/draw/vendor/images/alert-circle.svg" style="margin-right: 1rem;">
-					<div>Do not close this window!</div>
-				</div>
-				<div id="welcome-message">
-					<h4>Welcome to</h4>
-					<h1>Dima Library</h1>
-				</div>
-				<div id = "noise">
-					<p>Please describe the noise level of the library.</p>
-				</div>
-				<form action="" id = "form">
-					<label class="statement">1 being quiet to 5 being loud.</label>
-					<ul class='likert'>
-					  <li>
-						<input type="radio" onclick = "sendRating(1)" name="likert" value="1">
-						<label>1</label>
-					  </li>
-					  <li>
-						<input type="radio" onclick = "sendRating(2)" name="likert" value="2">
-						<label>2</label>
-					  </li>
-					  <li>
-						<input type="radio" onclick = "sendRating(3)" name="likert" value="3">
-						<label>3</label>
-					  </li>
-					  <li>
-						<input type="radio" onclick = "sendRating(4)" name="likert" value="4">
-						<label>4</label>
-					  </li>
-					  <li>
-						<input type="radio" onclick = "sendRating(5)" name="likert" value="5">
-						<label>5</label>
-					  </li>
-					</ul>
-				</form>
-				<div class="buttons">
-					<button id="submission">Submit</button>
-				</div>
-				<div>
-					<p>Whenever you are ready to leave the library, please click the button below.</p>
-				</div>
-				<div id="leavingButton">
-					<button id="leave-button" onclick="showPopUp()"><img src="../../static/draw/vendor/images/log-out.svg" style="margin-right: 0.4rem;">I'm leaving the library</button>
-				</div>
-				<div class="popup" id="leavingPopUp"> 
-					<div class="col-12">
-=======
 					<img src="../../static/draw/vendor/images/alert-circle.svg"  style="margin-right: 1rem; width: 4.5vh; height: 4.5vh;">
 					<div>Do not close this window!</div>
 				</div>
@@ -250,7 +202,6 @@
 				</div>
 				<div class="popup" id="leavingPopUp"> 
 					<div id = "myWords">
->>>>>>> 0084a7432d7af8624d20d98a262fa7c67b9ae1d5
 						Are you sure you want to check out? 
 					</div>
 					<div class="col myCol">
@@ -259,17 +210,10 @@
 					</div>
 				</div>
 			</div>
-<<<<<<< HEAD
-			<div id="leavingMessage">
-				Thanks for checking out! Refresh the page to sign back in or close the window.
-			</div>
-		</div>
-=======
 		</div>
         <div id="leavingMessage">
             Thanks for checking out! Refresh the page to sign back in or close the window.
         </div>
->>>>>>> 0084a7432d7af8624d20d98a262fa7c67b9ae1d5
         
         
 		
@@ -425,17 +369,6 @@
 			}
 		}
 
-<<<<<<< HEAD
-        function sendRating(number){
-            buildingGeneral = building.charAt(0);
-            const arr = buildingVolume.get(buildingGeneral);
-            arr.push(number);
-            buildingVolume.set("#"+buildingGeneral, arr);
-            socket.send("{\"room\" : " + JSON.stringify(buildingGeneral) + "}");
-        }
-
-=======
->>>>>>> 0084a7432d7af8624d20d98a262fa7c67b9ae1d5
         function setVolume(volume, room){
             const circlewordstr = "#Circle"+room;
             var circleword = document.querySelector(circlewordstr);
@@ -513,20 +446,14 @@
             if (size == "small"){
                 socket.send("{\"building\" : " + JSON.stringify(building) + ", \"floor\" : " +  floor  + ", \"value\" : " + -1 + "}" );
             }
-<<<<<<< HEAD
-=======
 			var smallScreen = document.getElementById("smallScreen");
->>>>>>> 0084a7432d7af8624d20d98a262fa7c67b9ae1d5
             var everythingnotleaving = document.getElementById("checkouthide");
             var leave = document.getElementById("leavingMessage");
             if (size == "small"){
                 leave.style.display = "block";
                 everythingnotleaving.style.display = "none";
-<<<<<<< HEAD
-=======
 				smallScreen.style.backgroundImage = "none";
 				smallScreen.style.backgroundColor = "#519119";
->>>>>>> 0084a7432d7af8624d20d98a262fa7c67b9ae1d5
             }
         }
 
