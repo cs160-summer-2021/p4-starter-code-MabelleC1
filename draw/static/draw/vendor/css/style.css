@@ -105,7 +105,7 @@ h4 {
     display: none;
 }
 
-.small-banner {
+#small-banner {
     margin: 8%;
     background-color: #EA5B62;
     color: #ffffff;
@@ -116,3 +116,23 @@ h4 {
     flex-direction: row;
     align-items: center;
 }
+
+.popup{
+    background-color: white;
+    color: black;
+    display: block;
+    font-size: 7vh;
+    text-align: center;
+    justify-content:center;
+    align-items: center;
+    width: 50vh;
+    height:50vh;
+    border-width: 1vh;
+    border-style: solid;
+    border-color: red;
+    border-radius: 10%;
+}
+
+
+
+
