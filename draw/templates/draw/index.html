@@ -152,24 +152,28 @@
 				<h3>Busy</h3>
 			</div>	
 		</div>
-		<div id = "smallScreen" class="small-display">
-			<div id = "small-banner">
+		<div id="smallScreen" class="small-display">
+			<div id="small-banner">
 				<img src="../../static/draw/vendor/images/alert-circle.svg" style="margin-right: 1rem;">
 				<div>Do not close this window!</div>
 			</div>
-            <div id = "leavingMessage">
+			<div id="welcome-message">
+				<h4>Welcome to</h4>
+				<h1>Dima Library</h1>
+			</div>
+            <div id="leavingMessage">
                 Thanks for checking out! Refresh the page to sign back in or close the window.
             </div>
-			<div id  = "leavingButton">
-                <button onclick = "showPopUp()">I'm leaving the library</button>
+			<div id="leavingButton">
+                <button onclick="showPopUp()">I'm leaving the library</button>
             </div>
-            <div class = "popup" id = "leavingPopUp"> 
-                <div class = "col-12">
+            <div class="popup" id="leavingPopUp"> 
+                <div class="col-12">
                     Are you sure you want to check out? 
                 </div>
-                <div class = "col myCol">
-                    <button onclick = "leavingFunction()">Yes</button>
-                    <button onclick = "hidePopUp()">No</button>
+                <div class="col myCol">
+                    <button onclick="leavingFunction()">Yes</button>
+                    <button onclick="hidePopUp()">No</button>
                 </div>
             </div>
 		</div>
@@ -267,6 +271,8 @@
             }
         }
 
+		// Room colour calculations
+
         function fillColorCalc(percentage) {
 			if (percentage <= 0.25) {
 				return "#DDF0F8"
@@ -295,7 +301,39 @@
 			else if (percentage <= 1) {
 				return "#00A6CE"
 			}
-        }		
+        }
+
+		// Volume calculations
+
+		function circleColorCalc(volume) {
+			if (volume <= (1/3)) {
+				return "#94D75F"
+			}
+			else if (volume <= (2/3)) {
+				return "#FFAA47"
+			}
+			else {
+				return "#D45151"
+			}
+		}
+
+		function line1Calc(volume) {
+			if (volume <= (1/3)) {
+				return "0"
+			}
+			else {
+				return "white"
+			}
+		}
+		
+		function line2Calc(volume) {
+			if (volume <= (2/3)) {
+				return "0"
+			}
+			else {
+				return "white"
+			}
+		}
 
         let groupOfObjects = init();
         const buildingGroups = groupOfObjects[0];
