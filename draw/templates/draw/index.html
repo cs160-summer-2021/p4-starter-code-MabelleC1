@@ -122,14 +122,14 @@
 				</defs>
 			</svg>	
 			<div id="library-free">
-				<h3>Busy</h3>
-				<div id="colours">
-					<div class="colour-block" style="background-color: #21BADF;"></div>
-					<div class="colour-block" style="background-color: #7BD3EB;"></div>
-					<div class="colour-block" style="background-color: #B8E5F3;"></div>
-					<div class="colour-block" style="background-color: #DDF0F8;"></div>
-				</div>
 				<h3>Free</h3>
+				<div id="colours">
+					<div class="colour-block" style="background-color: #DDF0F8;"></div>
+					<div class="colour-block" style="background-color: #B8E5F3;"></div>
+					<div class="colour-block" style="background-color: #7BD3EB;"></div>
+					<div class="colour-block" style="background-color: #21BADF;"></div>
+				</div>
+				<h3>Busy</h3>
 			</div>	
 		</div>
 		<div id = "smallScreen" class="small-display">
@@ -275,39 +275,7 @@
 			else if (percentage <= 1) {
 				return "#00A6CE"
 			}
-        }
-
-		/*
-		
-
-        function updateColorPalette(){
-            for (let i = 0; i < 5; i++) {
-                var color = float2color(1-(i/5));
-            }
-        }
-
-        function updateBoxes(buildingGroups){
-            for (let [key, value] of buildingGroups){
-                var rectbox = document.querySelector(key);
-                var color = float2color(1-(value[0]/value[1]));//some function that counts how many people are present;
-                if (value[0]>=value[1]){
-                    color = "#000000";
-                }
-                rectbox.setAttribute("fill", color);
-            }
-        }
-
-        //Link to where I foudn the code
-        function float2color( percentage ) {
-            var color_part_dec = 255 * percentage;
-            var color_part_hex = Number(parseInt( color_part_dec , 10)).toString(16);
-            // console.log("what is color_part_hex: ", color_part_hex)
-            return "#" + "00" + color_part_hex + color_part_hex;
-        }
-
-		*/
-
-		
+        }		
 
         let groupOfObjects = init();
         const buildingGroups = groupOfObjects[0];
