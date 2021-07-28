@@ -117,20 +117,35 @@ h4 {
     align-items: center;
 }
 
+#leave-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #00A6CE;
+    border: none;
+    color: white;
+    font-weight: 500;
+    padding: 0.8rem 1.2rem;
+    border-radius: 16px;
+}
+
+p {
+    font-weight: 400;
+    font-size: 11pt;
+}
+
 .popup{
     background-color: white;
     color: black;
     display: block;
-    font-size: 7vh;
     text-align: center;
     justify-content:center;
     align-items: center;
     width: 50vh;
-    height:50vh;
     border-width: 1vh;
     border-style: solid;
     border-color: red;
-    border-radius: 10%;
+    border-radius: 16px;
 }
 
 
