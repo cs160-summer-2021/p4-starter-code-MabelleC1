@@ -192,8 +192,31 @@
             return [buildingGroups, size, building, floor];
         }
 
-        
+        function updateBoxes(buildingGroups){
+            for (let [key, value] of buildingGroups){
+                var rectbox = document.querySelector(key);
+                if (value[0]==value[1]){
+                    value[0]= value[0]-0.5;
+                }
+                var fillColor = float2color(1-(value[0]/value[1]));//some function that counts how many people are present;
+				var strokeColor = float2color(1-(value[0]/value[1]));//some function that counts how many people are present;
+                rectbox.setAttribute("fill", fillColor);
+				rectbox.setAttribute("stroke", strokeColor);
+            }
+        }
 
+        //Link to where I foudn the code
+        function fillColorCalc( percentage ) {
+            var color_part_dec = 255 * percentage;
+            var color_part_hex = Number(parseInt( color_part_dec , 10)).toString(16);
+            // console.log("what is color_part_hex: ", color_part_hex)
+            return "#" + "00" + color_part_hex + color_part_hex;
+			if (percentage <= 0.25) {
+				return
+			}
+        }
+
+		/*
 		
 
         function updateColorPalette(){
@@ -220,6 +243,8 @@
             // console.log("what is color_part_hex: ", color_part_hex)
             return "#" + "00" + color_part_hex + color_part_hex;
         }
+
+		*/
 
 		
 
