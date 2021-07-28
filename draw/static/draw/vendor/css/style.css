@@ -278,11 +278,14 @@ p {
     background-color: lightcyan;
 }
 
-/* #leavingMessage{
-    font-size: 8vh;
+#leavingMessage{
+    font-size: 5vh;
     text-align:center;
+    margin-top: 20vh;
     border: 5px solid darkblue;
-} */
+    padding: 2vh;
+    background-color: #F5F7FB;
+}
 
 #leave-button {
     display: flex;

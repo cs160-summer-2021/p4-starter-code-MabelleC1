@@ -331,7 +331,7 @@
 			else if (percentage <= 0.75) {
 				return "#7BD3EB"
 			}
-			else if (percentage <= 1) {
+			else{
 				return "#21BADF"
 			}
         }
@@ -346,7 +346,7 @@
 			else if (percentage <= 0.75) {
 				return "#21BADF"
 			}
-			else if (percentage <= 1) {
+			else{
 				return "#00A6CE"
 			}
         }
@@ -446,11 +446,14 @@
             if (size == "small"){
                 socket.send("{\"building\" : " + JSON.stringify(building) + ", \"floor\" : " +  floor  + ", \"value\" : " + -1 + "}" );
             }
+			var smallScreen = document.getElementById("smallScreen");
             var everythingnotleaving = document.getElementById("checkouthide");
             var leave = document.getElementById("leavingMessage");
             if (size == "small"){
                 leave.style.display = "block";
                 everythingnotleaving.style.display = "none";
+				smallScreen.style.backgroundImage = "none";
+				smallScreen.style.backgroundColor = "#519119";
             }
         }
 
