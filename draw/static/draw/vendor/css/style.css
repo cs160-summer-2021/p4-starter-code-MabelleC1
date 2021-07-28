@@ -25,10 +25,7 @@ html, body {
 }
 
 body {
-    background-image: url("https://images.fineartamerica.com/images/artworkimages/medium/1/university-of-california-berkeley-sather-tower-the-campanile-from-the-doe-library-dsc4715-wingsdomain-art-and-photography.jpg");
     /* background-image: url("https://i.pinimg.com/originals/49/4b/45/494b45e78bdb79ceba99e9b3071ad61d.jpg"); */
-    background-size:cover;
-    background-repeat:no-repeat;
     background-color: #F5F7FB;
 }
 
@@ -105,6 +102,9 @@ h4 {
 }
 
 .small-display {
+    background-image: url("https://images.fineartamerica.com/images/artworkimages/medium/1/university-of-california-berkeley-sather-tower-the-campanile-from-the-doe-library-dsc4715-wingsdomain-art-and-photography.jpg");
+    background-size:cover;
+    background-repeat:no-repeat;
     width: 100%; 
     height: 100%;
     padding: 2% 8%;
@@ -137,7 +137,7 @@ h4.welcome{
 }
 
 h1.library{
-    font-size: 6vh;
+    font-size: 7vh;
 }
 
 
@@ -189,7 +189,7 @@ p {
     font-size: 2.5vh;
     font-weight: bold;
     padding: 30px 0 0 4.25%;
-    padding-top: 6vh;
+    padding-top: 8vh;
     padding-bottom: 5vh;
   }
   form .likert {
@@ -234,6 +234,7 @@ p {
   form .likert li label {
       padding-top: 3vh;
       font-size:  3vh;
+      margin-bottom: 2vh;
       width:100%;
   }
   form .buttons {
@@ -272,7 +273,7 @@ p {
     border-top: 5px solid darkblue;
     border-left: 5px solid darkblue;
     border-right: 5px solid darkblue; 
-    font-size: 2vh;
+    font-size: 4vh;
     margin-top: 2vh;
     text-align: center;
     background-color: lightcyan;
@@ -294,7 +295,7 @@ p {
     color: white;
     font-weight: 500;
     text-align:center;
-    font-size: 3vh;
+    font-size: 3.5vh;
     padding: 2vh 2vh;
     width: 100%;
     border-radius: 16px;
