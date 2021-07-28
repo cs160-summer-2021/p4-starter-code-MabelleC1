@@ -259,6 +259,8 @@ p {
     background-color: #94D75F;
     border: none;
     color: white;
+    position: relative;
+    margin: auto;
     font-size: 4vh;
     padding: 0.4rem 0.8rem;
     border-radius: 16px;
