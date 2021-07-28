@@ -240,8 +240,8 @@
                 if (value[0]==value[1]){
                     value[0]= value[0]-0.5;
                 }
-                var fillColor = fillColorCalc(1-(value[0]/value[1]));//some function that counts how many people are present;
-				var strokeColor = strokeColorCalc(1-(value[0]/value[1]));//some function that counts how many people are present;
+                var fillColor = fillColorCalc((value[0]/value[1]));//some function that counts how many people are present;
+				var strokeColor = strokeColorCalc((value[0]/value[1]));//some function that counts how many people are present;
                 rectbox.setAttribute("fill", fillColor);
 				rectbox.setAttribute("stroke", strokeColor);
             }
