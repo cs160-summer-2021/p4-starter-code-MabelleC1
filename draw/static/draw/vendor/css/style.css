@@ -21,11 +21,12 @@ html, body {
     width: 100%; 
     height: 100%;
     font-family: 'Roboto', sans-serif;
-    color: #4E5D79;
+    color: #344567;
 }
 
 body {
     background-color: #F5F7FB;
+    transition: 2s;
 }
 
 .content-holder {
@@ -107,16 +108,15 @@ h4 {
     background-repeat:no-repeat;
     width: 100%; 
     height: 100%;
-    padding: 2% 8%;
+    padding: 6% 6%;
 }
 
 #small-banner {
-    margin-top: 2vh;
     background-color: #EA5B62;
     color: #ffffff;
-    padding: 0.8rem 1.2rem;
-    font-size: 3vh;
-    border-radius: 3vh;
+    padding: 1vh 3.2vh;
+    font-size: 2.4vh;
+    border-radius: 32px;
     box-shadow: 0px 0px 10px #00000015;
     display: flex;
     flex-direction: row;
@@ -126,10 +126,8 @@ h4 {
 .welcome-message{
     margin-top:2vh;
     background-color: #00A6CE;
-    padding-left: 2vh;
-    padding-right: 2vh;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
+    border-radius: 16px;
+    padding: 2vh 3.2vh;
 }
 h4.welcome{
     font-size: 4vh;
@@ -138,6 +136,7 @@ h4.welcome{
 
 h1.library{
     font-size: 6vh;
+    color: white;
 }
 
 
@@ -148,7 +147,7 @@ p {
 }
 
 .popup{
-    background-color: lightgoldenrodyellow;
+    background-color: #F5F7FB;
     position: fixed;
     width: 100%;
     height: 100%;
@@ -159,23 +158,31 @@ p {
     bottom: 0; 
     z-index: 2;
     font-size: 8vh;
-    border-width: 1vh;
-    border-style: solid; 
-    border-color: red;
-    border-radius: 16px;
-    padding: 0.8rem 1.2rem;
+    padding: 2rem 4rem;
 }
+
+.volume-element {
+    transition: 0.5s;
+}
+
 #myWords{
     margin-top: 10vh;
+    font-size: 64pt;
 }
 
 .wrap {
     font:2vh Arial, san-serif;
-    background-color: lightcyan;
-    padding: 1.5vh;
+    background-color: #DDF0F899;
+    backdrop-filter: blur(80px);
+    padding: 2vh 3.2vh;
     margin-top: 3vh;
     width:100%;
-    border: 5px solid darkblue;
+    border-radius: 16px;
+    box-shadow: 0px 0px 10px #00000015;
+  }
+
+  col {
+      margin:0;
   }
   h1.likert-header {
     font-size: 3vh;
@@ -259,23 +266,24 @@ p {
     color: white;
     position: relative;
     margin: auto;
-    font-size: 4vh;
-    padding: 0.4rem 0.8rem;
+    font-size: 3vh;
+    padding: 1rem 4rem;
     border-radius: 16px;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    box-shadow: 0px 0px 10px #00000025;
 }
 
 #leavingMess{
     padding: 1.5vh;
-    border-top: 5px solid darkblue;
-    border-left: 5px solid darkblue;
-    border-right: 5px solid darkblue; 
+    background-color: #DDF0F899;
+    backdrop-filter: blur(80px);
     font-size: 2vh;
     margin-top: 2vh;
     text-align: center;
-    background-color: lightcyan;
+    border-radius: 16px;
+    margin-bottom: 2rem;
 }
 
 #leavingMessage{
@@ -285,6 +293,7 @@ p {
     border: 5px solid darkblue;
     padding: 2vh;
     background-color: #F5F7FB;
+    box-shadow: 0px 0px 10px #00000025;
 }
 
 #leave-button {
@@ -297,8 +306,18 @@ p {
     color: white;
     font-weight: 500;
     text-align:center;
-    font-size: 3vh;
+    font-size: 2.4vh;
     padding: 2vh 2vh;
     width: 100%;
     border-radius: 16px;
+}
+
+.yesno {
+    background-color: #00A6CE;
+    font-size: 48pt;
+    padding: 2rem 4rem;
+    border-radius: 16pt;
+    border: none;
+    box-shadow: 0px 0px 10px #00000015;
+    color: white;
 }

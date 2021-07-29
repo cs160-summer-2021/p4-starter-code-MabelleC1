@@ -51,10 +51,10 @@
 				<g filter="url(#filter0_d)">
 				<rect x="32" y="34" width="56" height="56" rx="6.89231" fill="#EA5B62"/>
 				<path d="M64.9277 68.041H55.0137L52.9395 74H48.3164L57.9844 48.4062H61.9746L71.6602 74H67.0195L64.9277 68.041ZM56.2617 64.4551H63.6797L59.9707 53.8379L56.2617 64.4551Z" fill="white"/>
-				<circle id="CircleA" cx="85" cy="37" r="17" fill="#94D75F"/>
+				<circle id="CircleA" class="volume-element" cx="85" cy="37" r="17" fill="#94D75F"/>
 				<path d="M84 30L79 34H75V40H79L84 44V30Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-				<path id="ALine1" d="M88.54 33.46C89.4774 34.3976 90.004 35.6692 90.004 36.995C90.004 38.3208 89.4774 39.5924 88.54 40.53" stroke="0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-				<path id="ALine2" d="M92.0701 29.93C93.9448 31.8053 94.9979 34.3484 94.9979 37C94.9979 39.6516 93.9448 42.1947 92.0701 44.07" stroke="0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+				<path id="ALine1" class="volume-element" d="M88.54 33.46C89.4774 34.3976 90.004 35.6692 90.004 36.995C90.004 38.3208 89.4774 39.5924 88.54 40.53" stroke="0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+				<path id="ALine2" class="volume-element" d="M92.0701 29.93C93.9448 31.8053 94.9979 34.3484 94.9979 37C94.9979 39.6516 93.9448 42.1947 92.0701 44.07" stroke="0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 				</g>
 				<g filter="url(#filter1_d)">
 				<rect x="20" y="371" width="55" height="56" rx="6.89231" fill="#EA5B62"/>
@@ -155,58 +155,58 @@
 		<div id="smallScreen" class="small-display">
 			<div id="checkouthide">
 				<div id="small-banner">
-					<img src="../../static/draw/vendor/images/alert-circle.svg"  style="margin-right: 1rem; width: 4.5vh; height: 4.5vh;">
+					<img src="../../static/draw/vendor/images/alert-circle.svg"  style="margin-right: 1rem; width: 4vh; height: 4vh;">
 					<div>Do not close this window!</div>
 				</div>
 				<div class="welcome-message">
                     <h4 class="welcome">Welcome to</h4>
 					<h1 class = "library">Dima Library</h1>
 				</div>
-                <div class = "col">
+                <div class = "col" style="padding:0;">
                     <div class="wrap">
-                        <h1 class="likert-header">Please describe the noise level of the library</h1>
+                        <h1 class="likert-header">Please describe the noise level of the library.</h1>
                         <form action="">
                           <label class="statement">1 being quiet to 5 being loud.</label>
                           <ul class='likert'>
                             <li>
-                            <input type="radio" onclick = "sendRating(1)" name="likert" value="1">
+                            <input type="radio" id="1" onclick = "sendRating(1)" name="likert" value="1">
                               <label>1</label>
                             </li>
                             <li>
-                              <input type="radio" onclick = "sendRating(2)" name="likert" value="2">
+                              <input type="radio" id="2" onclick = "sendRating(2)" name="likert" value="2">
                               <label>2</label>
                             </li>
                             <li>
-                              <input type="radio" onclick = "sendRating(3)" name="likert" value="3">
+                              <input type="radio" id="3" onclick = "sendRating(3)" name="likert" value="3">
                               <label>3</label>
                             </li>
                             <li>
-                              <input type="radio" onclick = "sendRating(4)" name="likert" value="4">
+                              <input type="radio" id="4" onclick = "sendRating(4)" name="likert" value="4">
                               <label>4</label>
                             </li>
                             <li>
-                              <input type="radio" onclick = "sendRating(5)" name="likert" value="5">
+                              <input type="radio" id="5" onclick = "sendRating(5)" name="likert" value="5">
                               <label>5</label>
                             </li>
                           </ul>
                         </form>
                         <div class="buttons">
-                            <button id="submission" onclick = "confirmRating()">Submit</button>
+                            <button id="submission" onclick = "confirmRating()" data-text-swap="Resubmit">Submit</button>
                         </div>
                 </div>
 				<div id="leavingMess">
 					Whenever you're leaving, click below.
 				</div>
 				<div id="leavingButton">
-					<button id="leave-button" onclick="showPopUp()"><img src="../../static/draw/vendor/images/log-out.svg" style="margin-right: 0.4rem; margin-left: 1vh;width:4vh;height:4vh">I'm leaving the library</button>
+					<button id="leave-button" onclick="showPopUp()"><img src="../../static/draw/vendor/images/log-out.svg" style="margin-right: 2rem; margin-left: 1vh;width:4vh;height:4vh">I'm leaving the library</button>
 				</div>
 				<div class="popup" id="leavingPopUp"> 
 					<div id = "myWords">
 						Are you sure you want to check out? 
 					</div>
 					<div class="col myCol">
-						<button onclick="leavingFunction()">Yes</button>
-						<button onclick="hidePopUp()">No</button>
+						<button class="yesno" onclick="leavingFunction()">Yes</button>
+						<button class="yesno" onclick="hidePopUp()">No</button>
 					</div>
 				</div>
 			</div>
@@ -255,7 +255,6 @@
             buildingGroupsFirstFloor.set('#A2', [3,5]);
             buildingGroupsFirstFloor.set('#A3', [2,5]);  
             buildingGroupsFirstFloor.set('#B1', [4,5]);  
-            buildingGroupsFirstFloor.set('#B2', [2,5]); 
             buildingGroupsFirstFloor.set('#B3', [1,5]); 
             buildingGroupsFirstFloor.set('#B4', [0,5]); 
             buildingGroupsFirstFloor.set('#C1', [3,5]);  
@@ -288,11 +287,11 @@
 
 
             buildingVolume = new Map();
-            buildingVolume.set("A", [5]);
-            buildingVolume.set("B", [1,2,4]);
-            buildingVolume.set("C", [1,2,4]);
-            buildingVolume.set("D", [1,2,4]);
-            buildingVolume.set("E", [1,2,4]);
+            buildingVolume.set("A", [0]);
+            buildingVolume.set("B", [2.5]);
+            buildingVolume.set("C", [5]);
+            buildingVolume.set("D", [5]);
+            buildingVolume.set("E", [2.5]);
 
             
             var url = window.location.href;
@@ -358,13 +357,23 @@
         }
 
 		function confirmRating(){
-			console.log(tempRating);
+			console.log("tempRating 361: " + tempRating);
 			if (tempRating > 0){
 				buildingGeneral = building.charAt(0);
 				const arr = buildingVolume.get(buildingGeneral);
 				arr.push(tempRating);
+				var total = 0;
+                console.log("arr 367: " + arr);
+                for(var i = 0; i < arr.length; i++) {
+                    total += arr[i];
+                }
+				var average = total / arr.length;
 				buildingVolume.set("#"+buildingGeneral, arr);
-				socket.send("{\"room\" : " + JSON.stringify(buildingGeneral) + "}");
+				socket.send("{\"room\" : " + JSON.stringify(buildingGeneral) + ", \"average\" : " + average+ "}");
+				
+				document.getElementById(tempRating).checked = false;
+				var button = $("#submission");
+				button.text(button.data("text-swap"));
 				tempRating  = -1;
 			}
 		}
@@ -429,14 +438,7 @@
                         updateBoxes(buildingGroups[received.floor]);
                     }
                     else{
-                        var total = 0;
-                        var arr =buildingVolume.get(received.room);
-                        console.log(arr);
-                        for(var i = 0; i < arr.length; i++) {
-                            total += arr[i];
-                        }
-                        var average = total / arr.length;
-                        setVolume(average, received.room);
+                        setVolume(received.average, received.room);
                     }
 				}
 			// You will probably want to add some code here to draw more lines.
